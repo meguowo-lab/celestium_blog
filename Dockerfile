@@ -18,4 +18,4 @@ RUN pip install -r requirements.txt --no-cache-dir && python manage.py migrate
 
 EXPOSE 80
 
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python manage.py runserver 0.0.0.0:80
