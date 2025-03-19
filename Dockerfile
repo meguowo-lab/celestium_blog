@@ -10,11 +10,11 @@ FROM python:3.12-slim
 
 COPY --from=builder requirements.txt .
 
-RUN pip install -r requirements.txt --no-cache-dir && python.manage.py migrate
-
 COPY . ./app
 
 WORKDIR /app
+
+RUN pip install -r requirements.txt --no-cache-dir && python.manage.py migrate
 
 EXPOSE 80
 
