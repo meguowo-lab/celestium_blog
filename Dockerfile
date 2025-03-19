@@ -8,13 +8,13 @@ RUN python3 -m poetry export --without-hashes --format=requirements.txt --output
 
 FROM python:3.12-slim
 
-COPY --from=builder requirements.txt .
-
 COPY . ./app
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt --no-cache-dir && python.manage.py migrate
+COPY --from=builder requirements.txt .
+
+RUN pip install -r requirements.txt --no-cache-dir && python manage.py migrate
 
 EXPOSE 80
 
