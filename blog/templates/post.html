@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <meta name="post-id" content="{{ post.id }}">
+{% endblock %}
+
+{% block body %}
+    <section class="flex justify-center">
+        <div class="bg-gray-800 border-[3px] border-gray-700 rounded w-[90%] lg:w-[60%]">
+            <section class="px-6 pt-6">
+                <p>{{ post.author.username }}</p>
+                <p>{{ post.created_at }}</p>
+                <br>
+                <p><strong>{{ post.title }}</strong></p>
+                <img src="/{{post.image}}" class="border-gray-900 drop-shadow-lg max-h-[90vh] justify-self-center mt-6">
+                <br>
+                <p class="break-words">{{ post.info }}</p>
+            </section>
+            <section class="px-6 border-t-[3px] border-gray-700">
+                <input class="mt-6 border-gray-900 border-2 rounded bg-gray-800 p-[0]" placeholder="ваше имя"></input>
+                <div contenteditable class="border-gray-900 border-2 rounded" id="comment-text"></div>
+                <button id="comment-btn">Оставить комментарий</button>
+            </section>
+            <section class="border-t-[3px] border-gray-700 px-6">
+                {% for comment in post.comments.all %}
+                    <div class="my-6 border-b-[1px] border-gray-700" id="{{ comment.id }}">
+                        <section class="comment">
+                            <strong>{{ comment.author }}</strong>
+                            <p>{{ comment.info }}</p>
+                            <button class="text-blue-300" name="ans-btn">Ответить</button>
+                        </section>
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+    </section>
+{% endblock %}
+
+{% block tail %}
+    <script src="/static/post.js"></script>
+{% endblock %}

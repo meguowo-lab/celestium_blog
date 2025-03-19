@@ -1,0 +1,24 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% block head %}
+        {% endblock %}
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-900 font-serif leading-normal tracking-normal text-amber-50">
+        <header class="h-[10vh] w-[100%] bg-gray-700 mb-6 flex items-center">
+            <a class="text-4xl ml-5" href="/">Blog</a>
+        </header>
+		{% block body %}
+        {% endblock %}
+	</body>
+</html>
+
+{% block tail %}
+{% endblock %}
