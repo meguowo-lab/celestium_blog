@@ -12,8 +12,10 @@ COPY --from=builder requirements.txt .
 
 RUN pip install -r requirements.txt --no-cache-dir
 
-COPY . .
+COPY . ./app
 
-CMD python manage.py runserver 80
+WORKDIR /app
 
 EXPOSE 80
+
+CMD python manage.py runserver 0.0.0.0:8000
